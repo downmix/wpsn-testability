@@ -9,6 +9,9 @@ function addAsync(x, y) {
     }, 100)
   })
 }
+function multipSync(x, y){
+  return x * y;
+}
 
 function throwErrorIfNegative(x) {
   if (x < 0) {
@@ -20,5 +23,6 @@ function throwErrorIfNegative(x) {
 module.exports = {
   addSync,
   addAsync,
+  multipSync,
   throwErrorIfNegative
 }

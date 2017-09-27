@@ -3,6 +3,7 @@ const assert = require('assert')
 const {
   addAsync,
   addSync,
+  multipSync,
   throwErrorIfNegative
 } = require('../src/functions')
 
@@ -38,6 +39,14 @@ describe('functions', function () {
       assert.equal(result, 3)
     })
   })
+
+  describe('multipSync', function() {
+    it('기본 기능', function() {
+      const result = multipSync(3, 2)
+      assert.equal(result, 6)
+    })
+  })
+
 
   describe('throwErrorIfNegative', function() {
     it('양수일 때 문제 없이 값을 반환', function() {
