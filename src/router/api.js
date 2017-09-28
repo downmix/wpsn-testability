@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const validator = require('validator')
+const bugsnag = require("bugsnag");
+bugsnag.register(process.env.BUGSNAG_KEY);
 
 const query = require('../query')
 const error = require('../error')
@@ -29,6 +31,8 @@ module.exports = ({postMessage}) => {
     }
   })
 
+  router.use(bugsnag.requestHandler);
+  router.use(bugsnag.errorHandler);
   router.use((req, res, next) => {
     next(new error.NotFoundError('경로를 찾을 수 없습니다.'))
   })
